@@ -12,7 +12,7 @@ Este projeto em C# (linguagem C#) é uma solução que implementa operações CR
 
 ### Models
 - Armazena as entidades utilizadas no projeto, representando as informações que são manipuladas no banco de dados e expostas pela aplicação web.
-
+ps: Data está no formato de Current Milliseconds
 ### Web
 - Contém os controladores e APIs expostas para interação com o sistema.
 
