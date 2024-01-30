@@ -1,0 +1,29 @@
+--------------COMANDOS DOCKER para subir o banco SQL-SERVER(Poderia ser criado um dockerfile, não fiz devido ao tempo)--------------
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong@Passw0rd>" `
+   -p 1433:1433 --name sql1 --hostname sql1 `
+   -d `
+   mcr.microsoft.com/mssql/server:2022-latest
+
+
+docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd `
+   -S localhost -U SA -P "<YourStrong@Passw0rd>" `
+   -Q "ALTER LOGIN SA WITH PASSWORD='<YourNewStrong@Passw0rd>'"
+
+
+
+docker exec -it sql1 "bash"
+
+
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+
+
+--------------COMANDOS SQL-----------------
+
+
+CREATE DATABASE TesteCrudDB;
+
+use TesteCrudDB;
+
+CREATE TABLE Users (id INT PRIMARY KEY IDENTITY(1,1), name VARCHAR(300) NOT NULL, birth_date BIGINT NOT NULL, income_value DECIMAL(10, 2) NOT NULL, cpf VARCHAR(14) UNIQUE NOT NULL);
+
+go;
